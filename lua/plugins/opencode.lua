@@ -84,5 +84,22 @@ return {
       end,
       desc = "Explain code near cursor",
     },
+    -- Open OpenCode in floating terminal
+    {
+      "<leader>to",
+      function()
+        local Terminal = require("toggleterm.terminal").Terminal
+        local opencode_term = Terminal:new({
+          cmd = "opencode",
+          direction = "float",
+          close_on_exit = false,
+          on_open = function(term)
+            vim.cmd("startinsert!")
+          end,
+        })
+        opencode_term:toggle()
+      end,
+      desc = "Open OpenCode in floating terminal",
+    },
   },
 }
